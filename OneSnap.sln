@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneSnap", "OneSnap\OneSnap.vcproj", "{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneSnapPS", "OneSnap\OneSnapPS.vcproj", "{C925006A-AB94-487D-87AD-9E74C1AFE236}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A} = {55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{59BADB7F-422C-4F2C-8CDE-63B96E75F14C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MergeModule", "MergeModule\MergeModule.vdproj", "{09D44DB5-6F38-4C46-A01E-0852D0A30200}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}.Debug|Win32.Build.0 = Debug|Win32
+		{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}.Release|Win32.ActiveCfg = Release|Win32
+		{55B668CE-3E70-4DB1-B34C-0D0782D9CD0A}.Release|Win32.Build.0 = Release|Win32
+		{C925006A-AB94-487D-87AD-9E74C1AFE236}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C925006A-AB94-487D-87AD-9E74C1AFE236}.Release|Win32.ActiveCfg = Release|Win32
+		{C925006A-AB94-487D-87AD-9E74C1AFE236}.Release|Win32.Build.0 = Release|Win32
+		{59BADB7F-422C-4F2C-8CDE-63B96E75F14C}.Debug|Win32.ActiveCfg = Debug
+		{59BADB7F-422C-4F2C-8CDE-63B96E75F14C}.Debug|Win32.Build.0 = Debug
+		{59BADB7F-422C-4F2C-8CDE-63B96E75F14C}.Release|Win32.ActiveCfg = Release
+		{59BADB7F-422C-4F2C-8CDE-63B96E75F14C}.Release|Win32.Build.0 = Release
+		{09D44DB5-6F38-4C46-A01E-0852D0A30200}.Debug|Win32.ActiveCfg = Debug
+		{09D44DB5-6F38-4C46-A01E-0852D0A30200}.Debug|Win32.Build.0 = Debug
+		{09D44DB5-6F38-4C46-A01E-0852D0A30200}.Release|Win32.ActiveCfg = Release
+		{09D44DB5-6F38-4C46-A01E-0852D0A30200}.Release|Win32.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

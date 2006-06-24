@@ -1,0 +1,279 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""OneSnap.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,1,1,0
+ PRODUCTVERSION 1,1,1,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "igmo.org"
+            VALUE "FileDescription", "OneSnap! web importer for OneNote"
+            VALUE "FileVersion", "1.1.1.0"
+            VALUE "InternalName", "OneSnap.dll"
+            VALUE "LegalCopyright", "(c) igmo.org,  All rights reserved."
+            VALUE "OriginalFilename", "OneSnap.dll"
+            VALUE "ProductName", "OneSnap"
+            VALUE "ProductVersion", "1.1.1.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_ONESNAP             REGISTRY                "OneSnap.rgs"
+IDR_SNAPPER             REGISTRY                "Snapper.rgs"
+IDR_SNAPPERAUTOMATOR    REGISTRY                "SnapperAutomator.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON24              ICON                    "..\\res\\camera24.ico"
+IDI_ICON96              ICON                    "..\\res\\camera96-32bpp.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SNAPPERDIALOG DIALOGEX 0, 0, 312, 169
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "OneSnap It!"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IED_COMMENT,10,83,293,54,ES_AUTOHSCROLL
+    LTEXT           "Comment",IDT_COMMENT,10,74,30,8
+    DEFPUSHBUTTON   "OK",IDOK,141,148,50,16
+    PUSHBUTTON      "Cancel",IDCANCEL,198,148,50,16
+    PUSHBUTTON      "Options...",IBT_Configure,254,148,50,16
+    COMBOBOX        ICB_DIRECTORY,10,20,181,145,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Folder",IDC_STATIC,10,10,20,8
+    COMBOBOX        ICB_SECTION,213,20,89,99,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Section",IDC_STATIC,213,10,25,8
+    EDITTEXT        IED_TITLE,10,48,293,13,ES_AUTOHSCROLL
+    LTEXT           "Title",IDT_TITLE,10,38,14,8
+    ICON            IDI_ICON96,IDC_STATIC,3,146,20,20,0,WS_EX_TRANSPARENT
+END
+
+IDD_SNAPPEROPTIONS DIALOGEX 0, 0, 355, 217
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "OneSnap Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,238,194,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,298,194,50,14
+    EDITTEXT        IDED_NOTEBOOK_PATH,25,77,312,12,ES_AUTOHSCROLL
+    LTEXT           "Path to Notebook",IDT_NOTEBOOK,25,67,57,8
+    EDITTEXT        IDED_CONFIG_PATH,24,28,311,12,ES_AUTOHSCROLL
+    LTEXT           "Configuration file",IDT_CONFIG,24,18,56,8
+    PUSHBUTTON      "Browse...",IDBT_BROWSE_NOTEBOOK,24,91,50,14
+    PUSHBUTTON      "Browse...",IDBT_BROWSE_CONFIG,24,42,50,14
+    CONTROL         "",IDS_WIDTH,"msctls_trackbar32",TBS_BOTH | WS_TABSTOP,209,133,100,27
+    CONTROL         "Import as background image",IDCHK_BACKGROUND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,162,107,10
+    CONTROL         "Navigate to page",IDCHK_NAVIGATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,177,71,10
+    CONTROL         "Limit page to max width",IDCHK_LIMIT_WIDTH,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,205,121,101,10
+    CONTROL         "Include shortcuts in folder/section lists",IDCHK_INCSHARES,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,116,133,10
+    PUSHBUTTON      "Apply",IDAPPLY,178,194,50,14
+    PUSHBUTTON      "Synchronize Now",IDC_UPDATE,56,143,68,14
+    CONTROL         "Update Hotlists on Ok/Apply",IDCHK_UPHOT,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,133,94,106,10
+    EDITTEXT        IDED_MAXWIDTH,307,139,28,14,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER,WS_EX_STATICEDGE
+    EDITTEXT        IDED_6INCH,212,158,13,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDED_36INCH,293,158,14,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    PUSHBUTTON      "Help...",IDC_ADVANCED,7,194,48,14
+    CONTROL         "Keep synchronized with notebook",IDC_AUTOSYNC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,24,131,123,10
+END
+
+IDD_NEWSECTION DIALOGEX 0, 0, 186, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Section"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "You entered a new section name.  Press Ok to browse for the new section.",IDC_STATIC,29,20,88,26
+    CONTROL         "Always skip this dialog in the future.",IDC_ALWAYSSKIP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,27,57,131,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SNAPPERDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 304
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 167
+    END
+
+    IDD_SNAPPEROPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 348
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_NEWSECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+SNAPPER.HTML            HTML                    "..\\res\\snapper.html"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNAME            "OneSnap"
+END
+
+STRINGTABLE 
+BEGIN
+    ICB_SECTION             "Select target OneNote section"
+    IDCHK_UPHOT             "Check to update hotlists on next Ok/Apply."
+    IDED_NOTEBOOK_PATH      "Path to your root notebook folder"
+    IDT_NOTEBOOK            "Path to your root notebook folder"
+    IDED_CONFIG_PATH        "Path to your OneSnap config file"
+    IDT_CONFIG              "Path to your OneSnap config file"
+    IDBT_BROWSE_NOTEBOOK    "Browse for your root notebook folder"
+    IDBT_BROWSE_CONFIG      "Browse for your OneSnap config file"
+    IDS_WIDTH               "Max web page width (inches)"
+    IDCHK_BACKGROUND        "When checked pages are imported as background OneNote images"
+END
+
+STRINGTABLE 
+BEGIN
+    IDCHK_NAVIGATE          "When checked OneNote navigates to new page after import"
+    IDCHK_LIMIT_WIDTH       "When checked large pages are scaled down to the max width"
+    IDBT_RESCAN             "Click to synchronize folder/section lists with notebook"
+    IDCHK_INCSHARES         "When checked folder/section lists include shortcuts to shared notebooks"
+    IDC_UPDATE              "Click to synchronize your folder/section lists with your notebook "
+    IDED_MAXWIDTH           "Max web page width (inches)"
+    IDT_TITLE               "Title of the OneNote page"
+    IDT_COMMENT             "Comment is placed at the top of the OneNote page"
+    IDC_AUTOSYNC            "When checked OneSnap automatically keeps its folder/section lists synchronized with your notebook"
+END
+
+STRINGTABLE 
+BEGIN
+    IBT_Configure           "Modify OneSnap options"
+    ICB_DIRECTORY           "Select the folder to import into"
+END
+
+STRINGTABLE 
+BEGIN
+    IDOK                    "Import page"
+    IDCANCEL                "Cancel import"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "OneSnap.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

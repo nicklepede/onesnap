@@ -1,0 +1,11 @@
+<script language="javascript">
+try
+{
+	var oSnapper = new ActiveXObject("OneSnap.SnapperAutomator");
+	oSnapper.SnapIt(external.menuArguments);
+}
+catch (ex)
+{
+	external.menuArguments.alert("problem finding OneSnap!");
+}	
+</script>

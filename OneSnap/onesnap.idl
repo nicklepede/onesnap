@@ -1,0 +1,56 @@
+// OneSnap.idl : IDL source for OneSnap
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (OneSnap.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(F47CBAB8-23B2-4C84-9EE4-0842992130BA),
+	dual,
+	nonextensible,
+	helpstring("ISnapper Interface"),
+	pointer_default(unique)
+]
+interface ISnapper : IDispatch{
+};
+[
+	object,
+	uuid(A2782010-2667-43B2-BEDD-3309546C0070),
+	dual,
+	nonextensible,
+	helpstring("ISnapperAutomator Interface"),
+	pointer_default(unique)
+]
+interface ISnapperAutomator : IDispatch{
+	[id(1), helpstring("method SnapIt")] HRESULT SnapIt(IUnknown* pUnknown);
+};
+[
+	uuid(AF55D804-0AD2-4215-8849-5854B4B244FE),
+	version(1.0),
+	helpstring("OneSnap 1.0 Type Library")
+]
+library OneSnapLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(F6550110-38AE-4176-9C31-53DD3F76C7E2),
+		helpstring("Snapper Class")
+	]
+	coclass Snapper
+	{
+		[default] interface ISnapper;
+	};
+	[
+		uuid(7E70E0CD-077C-4A3D-950D-6B876D55DF10),
+		helpstring("SnapperAutomator Class")
+	]
+	coclass SnapperAutomator
+	{
+		[default] interface ISnapperAutomator;
+	};
+};
