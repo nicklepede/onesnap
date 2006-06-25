@@ -123,6 +123,10 @@ HRESULT CSnapper::Exec(void)
 
 			if (!CapturePage(pszFilename, &lHeight, &lWidth)) throw "capture failed";
 
+			// fixup any special characters in the text strings
+			FixupTextForXml(sSettings.strTitle);
+			FixupTextForXml(sSettings.strComment);
+
 			CAtlString  strImport(TEXT(IMPORT_XML));
 
 			GUID	idPage;
@@ -263,6 +267,26 @@ HRESULT CSnapper::Exec(void)
 
 	return S_OK;
 
+}
+
+
+void CSnapper::FixupTextForXml(CString& str)
+{
+	// replace any XML special characters with entity reference.
+	//
+	//		char	entity reference
+	//		&		&amp;
+	//		<		&lt;
+	//		>		&gt;
+	//		"		&quot;
+	//		'		&apos;  <- doesn't seem to be necessary
+
+	str.Replace(_T("&"), _T("&amp;"));
+	str.Replace(_T("<"), _T("&lt;"));
+	str.Replace(_T(">"), _T("&gt;"));
+	str.Replace(_T("\""), _T("&quot;"));
+	//str.Replace(_T("'"),  _T("&apos;"));
+	 
 }
 
 void CSnapper::GetDpi(int* pdpiVert, int* pdpiHoriz)

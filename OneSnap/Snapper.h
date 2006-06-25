@@ -73,6 +73,8 @@ private:
 	BOOL CreateBMPFile(HWND hwnd, LPTSTR pszFile, HBITMAP hBMP, HDC hDC);
 	BOOL WriteDataFile(LPTSTR pszFile, BYTE* pbData, DWORD cbSize, HWND hwnd);
 	void OneNoteErrorMsg(CAtlString& strErr, _com_error& e);
+	void FixupTextForXml(CString& str);
+
 	CAtlString	GetPageTitle();
 	CAtlString GetPageHtml();
 	CAtlString	GetPageUrl();
