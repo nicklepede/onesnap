@@ -1,0 +1,10 @@
+bugfix: Convert XML "special characters" (&,",<,>, etc.) to proper XML markup.  
+RC 1.2.1 - added link to igmo.org, updated version numbers.
+added links to blog and www.igmo.org/onesnap
+v1.2 RTM RC3 Display hourglass icon during notebook scanning.
+
+Options dialog: Clicking Ok/Apply  never scans network folders.  Added "this may take a while" message to "Synchronize Now" button.
+Fixed dir-recursion math.  Changed default recursion depth to 10.  Documented recursion depth.
+Removed xml file from project.
+Added max_dir_depth option to protect against circular dir paths.  Documented former.  Lengthened Folder combo-box.
+TM RC2 - this one is for real.  Fixed bug w/ finding remote shortcuts.  Fixed right-click menu for global installs.
