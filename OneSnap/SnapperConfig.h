@@ -51,6 +51,7 @@ private:
 	CString GetDefaultNotebookPath();
 
 	void SetFilepath(LPCTSTR lpszFilepath);
+	bool BrowseForNotebook(TCHAR* pszNoteebookPath);
 
 	void AddCategoryEntry(LPCTSTR lpszPath, LPCTSTR lpszCategory, BOOL bIsNetworkPath, BOOL bFollowShortcuts, BOOL bFollowNetworkPaths);
 

@@ -182,6 +182,12 @@ void CSnapperConfig::LoadRegSettings()
 {
 	// preset settings to default values
 	m_strNotebookPath = LoadFromRegistry(ONESNAP_REGVAL_NOTEBOOKPATH, GetDefaultNotebookPath());
+	// verify path points to a directory. If it doesn't then just ask the user to select it.
+	if (!PathIsDirectory(m_strNotebookPath))
+	{
+		MessageBox(NULL, _T("OneSnap couldn't find your OneNote notebook.  After clicking OK you'll get a directory browser.  Please use it to find and select your notebook."), _T("Couldn't find notebook"), MB_OK);
+		BrowseForNotebook(m_strNotebookPath.GetBuffer());
+	}
 	m_strFilepath = LoadFromRegistry(ONESNAP_REGVAL_FILEPATH, GetDefaultFilepath(m_strNotebookPath));
 }
 
@@ -200,17 +206,83 @@ CString CSnapperConfig::GetDefaultFilepath(CString& strNotebookPath)
 // get the default path to "My Notebook".
 CString CSnapperConfig::GetDefaultNotebookPath()
 {
+	CString strPath(_T(""), MAX_PATH);
 	
-	CString strPath;
-#define FILEPATH_MAXLEN	512
-	strPath.Preallocate(FILEPATH_MAXLEN);
+	// the relative path from My Documents to the root notebook is stored in
+	// a regkey.
+	CRegKey rkSave;
+	if (ERROR_SUCCESS == rkSave.Open(HKEY_CURRENT_USER, _T("Software\\Microsoft\\Office\\11.0\\OneNote\\Options\\Save"), KEY_READ))
+	{
+		CString strRelPath;
+		ULONG cch = MAX_PATH;
+		if (ERROR_SUCCESS == rkSave.QueryStringValue(_T("My Notebook path"), strRelPath.GetBufferSetLength(MAX_PATH), &cch))
+		{
+			strRelPath.ReleaseBuffer();
 
-	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, 0,  strPath.GetBuffer());
-	strPath.ReleaseBuffer();
-	strPath += _T("\\My Notebook");
-	
+			CString strPathMyDocs;
+			if (S_OK == SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, 0,  strPathMyDocs.GetBufferSetLength(MAX_PATH)))
+			{
+				strPathMyDocs.ReleaseBuffer();
+				PathCombine(strPath.GetBuffer(), strPathMyDocs.GetBuffer(), strRelPath.GetBuffer());
+			}
+		}
+	}
+
 	return strPath;
 }
+
+bool CSnapperConfig::BrowseForNotebook(TCHAR* pszNotebookPath)
+{
+	bool bGotit = false;
+	BROWSEINFO sBi = { 0 };
+	sBi.lpszTitle = _T("Select your notebook directory");
+	/*
+    sBi.lpszTitle = TEXT("Select Notebook(s)");
+	sBi.hwndOwner = m_hWndTop;
+	sBi.iImage = 
+	*/
+    LPITEMIDLIST pIdl = SHBrowseForFolder ( &sBi );
+    if ( pIdl != NULL )
+    {
+        // get the name of the folder
+        if ( SHGetPathFromIDList ( pIdl, pszNotebookPath ) )
+        {
+			bGotit = true;
+        }
+
+        // free memory 
+        IMalloc * piMalloc = NULL;
+        if ( SUCCEEDED( SHGetMalloc ( &piMalloc )) )
+        {
+            piMalloc->Free ( pIdl );
+            piMalloc->Release ( );
+        }
+
+    }
+	
+	return bGotit;
+	
+}
+
+
+
+
+#if 0
+		string notebookPath = "My Notebook";
+
+			// The Notebook Path is stored in the Save options in the registry:
+			string saveKey = "Software\\Microsoft\\Office\\11.0\\OneNote\\Options\\Save";
+			using (RegistryKey saveOptions = Registry.CurrentUser.OpenSubKey(saveKey))
+			{
+				if (saveOptions != null)
+					notebookPath = saveOptions.GetValue("My Notebook path", notebookPath).ToString();				
+			}
+
+			// This path is relative to the user's My Documents folder
+			string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			return Path.Combine(documentsFolder, notebookPath);
+#endif
+
 
 void CSnapperConfig::SetConfigFilePath(LPCTSTR lpszFilepath)
 {
