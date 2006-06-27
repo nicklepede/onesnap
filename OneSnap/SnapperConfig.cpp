@@ -200,7 +200,10 @@ void CSnapperConfig::SaveRegSettings()
 // get the default path to the config file.   Default path is <NOTEBOOK PATH>\OneSnap.xml.
 CString CSnapperConfig::GetDefaultFilepath(CString& strNotebookPath)
 {
-	return CString( strNotebookPath + _T("\\OneSnap.xml")); 
+	CString strFilePath;
+	PathCombine(strFilePath.GetBufferSetLength(MAX_PATH), strNotebookPath, _T("OneSnap.xml"));
+	strFilePath.ReleaseBuffer();
+	return strFilePath;
 }
 
 // get the default path to "My Notebook".
@@ -223,7 +226,8 @@ CString CSnapperConfig::GetDefaultNotebookPath()
 			if (S_OK == SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, 0,  strPathMyDocs.GetBufferSetLength(MAX_PATH)))
 			{
 				strPathMyDocs.ReleaseBuffer();
-				PathCombine(strPath.GetBuffer(), strPathMyDocs.GetBuffer(), strRelPath.GetBuffer());
+				PathCombine(strPath.GetBuffer(), strPathMyDocs, strRelPath);
+				strPath.ReleaseBuffer();
 			}
 		}
 	}
